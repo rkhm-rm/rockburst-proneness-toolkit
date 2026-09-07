@@ -194,6 +194,3 @@ plt.ylabel('Axial stress at failure σ1 (MPa)')
 plt.title('Mohr-Coulomb Fit (σ1 vs σ3 method)')
 plt.legend()
 plt.show()
-#git add .
-#git commit -m "your message"
-#git push
