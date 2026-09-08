@@ -25,17 +25,16 @@ All methods were validated by reproducing the published results in Wibisono et a
 |---|---|---|---|
 | B1 | 6.82 | 5.1 – 9.6 | Strong rockburst |
 | R | 1.30 | 1.3 | Bursting rock |
-| BIM | 1.18 | 1.18 | High liability* |
+| BIM | 1.18 | 1.18 | Moderate-to-high liability* |
 | F | 2.31 | 2.32 | Weak-medium shock |
-| Friction angle | 21.6° | 21.4° | Within 0.2° |
-| Cohesion | 1.04 MPa | 1.06 MPa | Within 0.02 MPa |
+| Friction angle | 21.4° | 21.4° | Exact match |
+| Cohesion | 1.06 MPa | 1.06 MPa | Exact match |
 
 \* The BIM and F classification charts in the source paper use continuous graded bars rather than sharp thresholds, so the numeric value should be treated as more reliable than the qualitative label near boundary values.
 
 ## Files
 
-- `rockburst_criteria.py` — the four criteria calculators, classification functions, specimen statistics, curve integration, and Mohr-Coulomb fitting
-- `stress_strain_plot.py` — visualization of stress-strain curves with shaded pre-peak/post-peak energy regions
+- `rockburst_criteria.py` — the four criteria calculators, classification functions, specimen statistics, curve integration, and Mohr-Coulomb fitting, including illustrative stress-strain and Mohr-Coulomb plots
 
 ## Status
 
