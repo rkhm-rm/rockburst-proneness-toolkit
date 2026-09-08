@@ -34,13 +34,13 @@ def calculate_bim(a2, a1):
     """BIM = total pre-peak energy / peak elastic strain energy"""
     return a2 / a1
 
-def classify_bim(bim): 
-    """thresholds approximated from Fig. 7, not exact — verify with Prof. Adoko 
-    if this criterion is used for real analysis"""
-    if bim <= 1.1:
+def classify_bim(bim):
+    """Thresholds set to the paper's Fig. 7 band edges: <=1.2 = high,
+    1.2-1.5 = moderate, >1.5 = low bursting liability."""
+    if bim <= 1.2:
         return "high bursting liability"
-    elif bim <= 1.3:
-        return "moderate-to-high bursting liability"
+    elif bim <= 1.5:
+        return "moderate bursting liability"
     else:
         return "low bursting liability"
 
