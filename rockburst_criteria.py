@@ -109,16 +109,19 @@ print(f"\nB1 using computed means = {b1_from_computed:.2f} -> {classify_b1(b1_fr
 
 
 # ---------- Step 3: Calculate R directly from a realistic curve using numerical integration ----------
+# Note: illustrative curve using real peak stress (3.07 MPa); 
+# validated R=1.3 comes from Step 1's literal paper values, not this curve
+
 import matplotlib.pyplot as plt
 
 # Build a more realistic asymmetric curve:
 # - rises steeply to peak (like real rock loading)
 # - drops MUCH faster after peak (brittle post-peak behavior, unlike our earlier symmetric curve)
 strain_rise = np.linspace(0, 0.4, 100)      # pre-peak: strain 0 to 0.4%
-stress_rise = 4 * (strain_rise / 0.4) ** 0.7  # curves up toward peak
+stress_rise = 3.07 * (strain_rise / 0.4) ** 0.7  # curves up toward peak
 
 strain_drop = np.linspace(0.4, 0.65, 60)    # post-peak: strain 0.4 to 0.65% (short = brittle)
-stress_drop = 4 * (1 - ((strain_drop - 0.4) / 0.25) ** 1.5)  # steep drop
+stress_drop = 3.07 * (1 - ((strain_drop - 0.4) / 0.25) ** 1.5)  # steep drop
 
 strain = np.concatenate([strain_rise, strain_drop])
 stress = np.concatenate([stress_rise, stress_drop])
@@ -151,7 +154,7 @@ plt.fill_between(strain_after, stress_after, color='salmon', alpha=0.6, label=f'
 plt.scatter([peak_strain], [peak_stress], color='red', zorder=5, label='Peak strength')
 plt.xlabel('Strain (%)')
 plt.ylabel('Stress (MPa)')
-plt.title(f'Realistic Brittle Curve: R = {r_computed:.2f} ({classify_r(r_computed)})')
+plt.title(f'Illustrative Curve (peak={peak_stress:.2f} MPa) — Method demo, R differs from validated Step 1 result')
 plt.legend()
 plt.show()
 
@@ -164,7 +167,7 @@ sigma_3 = np.array([0, 1.5, 3, 4.5])  # MPa
 
 # simulated sigma_1 (axial stress at failure) - realistic values consistent 
 # with paper's reported c=1.06 MPa, phi=21.4 degrees, with small scatter
-sigma_1 = np.array([3.05, 6.35, 9.40, 12.85])  # MPa
+sigma_1 = np.array([3.11, 6.33, 9.56, 12.78])  # MPa
 
 # linear regression: sigma_1 = intercept + slope * sigma_3
 # np.polyfit fits a line (degree 1) and returns [slope, intercept]
